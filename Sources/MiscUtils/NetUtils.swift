@@ -3,7 +3,7 @@ import Foundation
 public enum NetUtils {
     /// A description
     /// - Parameters:
-    ///   - url: String - URL to fetch from
+    ///   - url: String - url to fetch from
     ///   - headers: - `Dictionary<String, String>` - defaults to `[:]`
     ///   - cachePolicy: - `URLRequest.CachePolicy` - defaults to `.returnCacheDataElseLoad`
     ///
@@ -33,6 +33,32 @@ public enum NetUtils {
         }
 
         return data
+    }
+
+    /// A description
+    /// - Parameters:
+    ///   - url: `String` - url to fetch from
+    ///   - headers: `Dictionary<String,String>` - defaults to `[:]`
+    ///   - cachePolicy: `URLRequest.CachePolicy` - defaults to `.returnCacheDataElseLoad`
+    ///   - decoder: `JSONDecoder`
+    ///   - decodeType: `Decodable.Type` - struct to decode JSON into
+    ///
+    /// - Throws:
+    /// - Returns:
+    @available(macOS 12.0, *)
+    public static func fetchJSON(
+        url: String,
+        headers: [String: String] = [:],
+        cachePolicy: URLRequest.CachePolicy = .returnCacheDataElseLoad,
+        decoder: JSONDecoder = JSONDecoder(),
+        decodeType: Decodable.Type
+    ) async throws -> Decodable {
+        let data = try await fetchData(
+            url: url,
+            headers: headers,
+            cachePolicy: cachePolicy
+        )
+        return try decoder.decode(decodeType, from: data)
     }
 
     /// A description
