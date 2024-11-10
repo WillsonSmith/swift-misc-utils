@@ -46,13 +46,13 @@ public enum NetUtils {
     /// - Throws:
     /// - Returns:
     @available(macOS 12.0, *)
-    public static func fetchJSON(
+    public static func fetchJSON<T: Decodable>(
         url: String,
         headers: [String: String] = [:],
         cachePolicy: URLRequest.CachePolicy = .returnCacheDataElseLoad,
         decoder: JSONDecoder = JSONDecoder(),
-        decodeType: Decodable.Type
-    ) async throws -> Decodable {
+        decodeType: T.Type
+    ) async throws -> T {
         let data = try await fetchData(
             url: url,
             headers: headers,
