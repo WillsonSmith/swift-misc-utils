@@ -81,7 +81,7 @@ strongifiedSelf
 --wraparguments before-first
 --wrapparameters before-first
 --wrapcollections before-first
---wrapreturntype if-multiline
+--wrapreturntype preserve 
 --wrapconditions after-first
 
 --self init-only
