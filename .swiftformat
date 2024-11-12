@@ -30,8 +30,8 @@ redundantRawValues,               \
 redundantType,                    \
 redundantVoidReturnType,          \
 semicolons,                       \
-sortedImports,                    \
-sortedSwitchCases,                \
+sortImports,                    \
+sortSwitchCases,                \
 spaceAroundBraces,                \
 spaceAroundBrackets,              \
 spaceAroundComments,              \
