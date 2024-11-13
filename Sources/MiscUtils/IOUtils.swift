@@ -21,6 +21,8 @@ public enum IOUtils {
             at: directory,
             withIntermediateDirectories: createMissingDirectories
         )
+
+        try writeString(string, to: urlToWrite)
     }
 
     /// A description
@@ -31,7 +33,7 @@ public enum IOUtils {
         String(data: try Data(contentsOf: fileUrl), encoding: .utf8)
     }
 
-    // MARK: Private
+    // MARK: Internal
 
     /// A description
     /// - Parameters:
@@ -39,7 +41,7 @@ public enum IOUtils {
     ///   - to: the url of file
     ///
     /// - Throws: when the file fails to write
-    private static func writeString(_ string: String, to: URL) throws {
+    static func writeString(_ string: String, to: URL) throws {
         try string.write(to: to, atomically: true, encoding: .utf8)
     }
 }
