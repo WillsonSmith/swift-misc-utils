@@ -1,4 +1,9 @@
 import Foundation
+#if canImport(FoundationNetworking)
+    import FoundationNetworking
+#endif
+
+// MARK: - NetUtils
 
 public enum NetUtils {
     /// A description
